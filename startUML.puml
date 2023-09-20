@@ -1,0 +1,52 @@
+@startuml
+class start.ClientCode {
++ void start()
+- void addition()
+- void subtraction()
+- void multiplication()
+- void division()
+- ComplexNumber getNumber(String)
+}
+class start.Input {
+# String input(String)
+}
+class start.Main {
++ {static} void main(String[])
+}
+class start.math087.Math087 {
+~ ComplexNumber num
++ ComplexNumber addition(ComplexNumber,ComplexNumber)
++ ComplexNumber subtraction(ComplexNumber,ComplexNumber)
++ ComplexNumber multiplication(ComplexNumber,ComplexNumber)
++ ComplexNumber division(ComplexNumber,ComplexNumber)
+}
+class start.number.ComplexNumber {
+- double real
+- double imaginary
++ String toString()
++ double real()
++ double imaginary()
+}
+class start.number.CheckNumber {
++ double[] checkNumber(String)
++ {static} boolean isFirstNumber(String)
++ {static} int countChars(String,char)
+}
+interface start.math087.IMath087 {
+~ ComplexNumber addition(ComplexNumber,ComplexNumber)
+~ ComplexNumber subtraction(ComplexNumber,ComplexNumber)
+~ ComplexNumber multiplication(ComplexNumber,ComplexNumber)
+~ ComplexNumber division(ComplexNumber,ComplexNumber)
+}
+enum start.Commands {
++  a
++  s
++  m
++  d
++  stop
+}
+
+
+start.Input <|-- start.ClientCode
+start.math087.IMath087 <|.. start.math087.Math087
+@enduml

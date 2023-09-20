@@ -1,0 +1,106 @@
+@startuml
+class seminar4.defenth.Plate {
++ int defense()
++ String toString()
+}
+class seminar4.TeamBattle {
+~ Team<T> reds
+~ Team<T> greens
++ void teamFight()
+}
+class seminar4.defenth.Leather {
++ int defense()
++ String toString()
+}
+interface seminar4.weapons.meleeWeapon.Melee {
+}
+class seminar4.defenth.Mail {
++ int defense()
++ String toString()
+}
+abstract class seminar4.units.Unit {
+# String name
+# int healthPoint
+# Weapon weapon
+# Armor armor
++ String getName()
++ int getHealthPoint()
++ int getArmor()
++ Weapon getWeapon()
++ int hit()
++ int def()
++ void reduceHealth(int)
++ String toString()
+}
+interface seminar4.weapons.Weapon {
+~ int damage()
+}
+class seminar4.weapons.meleeWeapon.Axe {
++ int damage()
++ String toString()
+}
+class seminar4.weapons.rangeWeapon.Crossbow {
++ int damage()
++ int distance()
++ String toString()
+}
+interface seminar4.defenth.Armor {
+~ int defense()
+}
+class seminar4.Main {
++ {static} void main(String[])
+}
+class seminar4.units.Infantryman {
++ String toString()
+}
+class seminar4.Team {
+- List<T> team
++ void add(T)
++ Iterator<T> iterator()
++ int getTeamHealth()
++ int getTeamArmorMin()
++ int maxAttackDistance()
++ int getTeamAttack()
++ String toString()
+}
+class seminar4.weapons.meleeWeapon.Sword {
++ int damage()
++ String toString()
+}
+class seminar4.units.Archer {
++ int distance()
++ String toString()
+}
+interface seminar4.weapons.rangeWeapon.Range {
+~ int distance()
+}
+class seminar4.defenth.None {
++ int defense()
++ String toString()
+}
+class seminar4.weapons.rangeWeapon.Bow {
++ int damage()
++ int distance()
++ String toString()
+}
+class seminar4.Duel {
+- Unit w1
+- Unit w2
++ void fight()
+}
+
+
+seminar4.defenth.Armor <|.. seminar4.defenth.Plate
+seminar4.defenth.Armor <|.. seminar4.defenth.Leather
+seminar4.weapons.Weapon <|-- seminar4.weapons.meleeWeapon.Melee
+seminar4.defenth.Armor <|.. seminar4.defenth.Mail
+seminar4.weapons.meleeWeapon.Melee <|.. seminar4.weapons.meleeWeapon.Axe
+seminar4.weapons.rangeWeapon.Range <|.. seminar4.weapons.rangeWeapon.Crossbow
+seminar4.units.Unit <|-- seminar4.units.Infantryman
+seminar4.Iterable <|.. seminar4.Team
+seminar4.weapons.meleeWeapon.Melee <|.. seminar4.weapons.meleeWeapon.Sword
+seminar4.units.Unit <|-- seminar4.units.Archer
+seminar4.weapons.Weapon <|-- seminar4.weapons.rangeWeapon.Range
+seminar4.defenth.Armor <|.. seminar4.defenth.None
+seminar4.weapons.rangeWeapon.Range <|.. seminar4.weapons.rangeWeapon.Bow
+@enduml
