@@ -1,0 +1,31 @@
+@startuml
+
+abstract class Shape {
+    +abstract area(): float
+}
+
+class Rectangle {
+    -width: float
+    -height: float
+    +init(width: float, height: float)
+    +area(): float
+}
+
+class Circle {
+    -radius: float
+    +init(radius: float)
+    +area(): float
+}
+
+class AreaCalculator {
+    +calculate_area(shapes: List[Shape]): float
+}
+
+Shape <|-- Rectangle
+Shape <|-- Circle
+
+Rectangle "1" *-- "1..*" Shape
+Circle "1" *-- "1..*" Shape
+AreaCalculator "1" -- "*" Shape
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+
+interface IElectronicDevice {
+    + power_on()
+    + power_off()
+}
+
+class ElectronicDevice {
+    + power_on()
+    + power_off()
+}
+
+IElectronicDevice <|-- ElectronicDevice
+
+interface IAudioDevice {
+    + play_sound()
+    + stop_sound()
+}
+
+class AudioDevice {
+    + play_sound()
+    + stop_sound()
+}
+
+IAudioDevice <|-- AudioDevice
+
+class AllInOneDevice {
+    + power_on()
+    + power_off()
+    + play_sound()
+    + stop_sound()
+}
+
+IElectronicDevice <|-- AllInOneDevice
+IAudioDevice <|-- AllInOneDevice
+
+@enduml

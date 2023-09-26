@@ -1,0 +1,20 @@
+@startuml
+
+interface NotificationDependency {
+    + send_notification(message: str)
+}
+
+class EmailNotification {
+    + send_notification(message: str)
+}
+
+NotificationDependency <|-- EmailNotification
+
+class UserManagement {
+    + __init__(notification_dependency: NotificationDependency)
+    + create_user(username: str)
+}
+
+NotificationDependency <|.. UserManagement
+
+@enduml

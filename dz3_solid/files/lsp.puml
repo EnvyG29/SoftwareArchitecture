@@ -1,0 +1,29 @@
+@startuml
+
+abstract class Vehicle {
+    + name: String
+    + speed: int
+    {abstract} + start(): String
+    {abstract} + stop(): String
+}
+
+class Car {
+    + start(): String
+    + stop(): String
+}
+
+class Bicycle {
+    + start(): String
+    + stop(): String
+}
+
+class Race {
+    + race(vehicle: Vehicle)
+}
+
+Vehicle <|-- Car
+Vehicle <|-- Bicycle
+
+Vehicle "1" <--left-- "0..*" Race
+
+@enduml
