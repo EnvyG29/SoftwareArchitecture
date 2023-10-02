@@ -10,6 +10,7 @@ class Car {
     + def min_fuel_level_sensor(self)
     + def sensor_reading(self, km: int)
     + def check_petrol(self, current_fuel_level: int)
+    + def start(self)
     + def stop(self)
 }
 
@@ -23,6 +24,16 @@ class Driving {
 }
 
 Car "1" *-- "1" Driving : has
+
+interface Vehicle{
+    + start(self)
+    + stop(self)
+    + min_fuel_level_sensor(self):
+    + sensor_reading(self, km: float)
+    + check_petrol(self, current_liters: float)
+}
+
+Car "1" *-- "1" Vehicle : has
 
 namespace main {
     class Main {
