@@ -1,0 +1,36 @@
+@startuml
+
+abstract class Vehicle {
+    {abstract} +start(): void
+    {abstract} +stop(): void
+    {abstract} +min_fuel_level_sensor(): void
+    {abstract} +sensor_reading(km: int): void
+    {abstract} +check_petrol(): void
+}
+
+class Car {
+    -type_car: str
+    -tank: int
+    -current_fuel_level: float
+    -fuel_consumption: float
+
+    +init(type_car: str, tank: int, current_fuel_level: float, fuel_consumption: float): void
+    +start(): void
+    +stop(): void
+    +min_fuel_level_sensor(): void
+    +sensor_reading(km: int): void
+    +check_petrol(current_liters: float): void
+}
+
+class Driving {
+    -car: Car
+
+    +init(car: Car): void
+    +start_vehicle(): void
+    +drive(km: int): void
+    +stop_vehicle(): void
+}
+
+Vehicle <|-- Car
+Driving "1" *-- "1" Car
+@enduml
