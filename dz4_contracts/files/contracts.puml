@@ -18,7 +18,7 @@ class Driving {
     + vehicle: Car
     + def __init__(self, vehicle: Car)
     + def start_vehicle(self)
-    + def drive(self, km: int)
+    # def __drive(self, km: int)
     + def driving(self, km: int)
     + def stop_vehicle(self)
 }
