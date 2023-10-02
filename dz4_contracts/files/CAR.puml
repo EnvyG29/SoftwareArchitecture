@@ -1,36 +1,59 @@
 @startuml
 
-abstract class Vehicle {
-    {abstract} +start(): void
-    {abstract} +stop(): void
-    {abstract} +min_fuel_level_sensor(): void
-    {abstract} +sensor_reading(km: int): void
-    {abstract} +check_petrol(): void
-}
-
 class Car {
-    -type_car: str
-    -tank: int
-    -current_fuel_level: float
-    -fuel_consumption: float
-
-    +init(type_car: str, tank: int, current_fuel_level: float, fuel_consumption: float): void
-    +start(): void
-    +stop(): void
-    +min_fuel_level_sensor(): void
-    +sensor_reading(km: int): void
-    +check_petrol(current_liters: float): void
+    + model: str
+    + max_fuel_level: int
+    + current_fuel_level: int
+    + fuel_consumption: float
+    + engine_ON: bool
+    + def __init__(self, model: str, max_fuel_level: int, current_fuel_level: int, fuel_consumption: float)
+    + def min_fuel_level_sensor(self)
+    + def sensor_reading(self, km: int)
+    + def check_petrol(self, current_fuel_level: int)
+    + def stop(self)
 }
 
 class Driving {
-    -car: Car
-
-    +init(car: Car): void
-    +start_vehicle(): void
-    +drive(km: int): void
-    +stop_vehicle(): void
+    + vehicle: Car
+    + def __init__(self, vehicle: Car)
+    + def start_vehicle(self)
+    + def drive(self, km: int)
+    + def driving(self, km: int)
+    + def stop_vehicle(self)
 }
 
-Vehicle <|-- Car
-Driving "1" *-- "1" Car
+Car "1" *-- "1" Driving : has
+
+namespace main {
+    class Main {
+        + def main()
+    }
+}
+
+Main "1" --> "1" Driving : creates
+
+namespace PrePostConditions {
+
+    class Preconditions {
+        + def start_vehicle(self)
+    }
+
+    class Postconditions {
+        + def start_vehicle(self)
+        + def stop_vehicle(self)
+        + def driving(self, km: int)
+    }
+
+    class Invariants {
+        + def start_vehicle(self)
+        + def drive(self, km: int)
+        + def driving(self, km: int)
+        + def stop_vehicle(self)
+    }
+
+    Preconditions "1" -- "1" Driving : depends
+    Driving "1" -- "1" Postconditions : depends
+    Invariants "1" -- "1" Driving : depends
+}
+
 @enduml
