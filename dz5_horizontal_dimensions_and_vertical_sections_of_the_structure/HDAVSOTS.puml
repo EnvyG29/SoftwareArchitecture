@@ -1,0 +1,109 @@
+@startuml
+namespace dz5_horizontal_dimensions_and_vertical_sections_of_the_structure{
+    skinparam sequenceArrowThickness 2
+
+    package main {
+        class Main {
+            + main()
+        }
+    }
+
+    package view {
+        package in_out_operators{
+            class InputSlice {
+            + get_input()
+            }
+
+            class OutputSlice {
+            + get_output()
+            }
+
+        }
+
+        interface IView {
+            + run_calculator()
+            + memory()
+        }
+
+        class InputOutput {
+            + get_in()
+            + display_out()
+        }
+
+        class ConsoleView extends IView {
+            + main()
+        }
+    }
+
+    package calculator {
+        package operators {
+            class SumOperator{
+                + self.arg1 = a
+                + self.arg2 = b
+                - __init__()
+                + sum_operator()
+            }
+
+            class SubtractOperator{
+                + self.arg1 = a
+                + self.arg2 = b
+                - __init__()
+                + subtract_operator()
+            }
+
+            class MultiplicationOperator{
+                + self.arg1 = a
+                + self.arg2 = b
+                - __init__()
+                + multiplication_operator()
+            }
+
+             class DivisionOperator{
+                + self.arg1 = a
+                + self.arg2 = b
+                - __init__()
+                + division_operator()
+            }
+        }
+
+        class Calculator {
+            + static add()
+            + static subtract()
+            + static multiplication()
+            + static division()
+        }
+    }
+
+    package data_base {
+        class DataBaseManager {
+            + save()
+            + fetch()
+        }
+    }
+
+
+    skinparam arrowColor #FF0000
+    IView .> view.ConsoleView : import
+
+    skinparam arrowColor #E15501
+    ConsoleView .> Main : import
+
+    skinparam arrowColor #C63678
+    InputSlice .> InputOutput : import
+    OutputSlice .> InputOutput : import
+
+    skinparam arrowColor #007243
+    SumOperator .> Calculator : import
+    SubtractOperator .> Calculator : import
+    MultiplicationOperator .> Calculator : import
+    DivisionOperator .> Calculator : import
+
+    skinparam arrowColor #0000FF
+    InputOutput .> ConsoleView : import
+    Calculator .> ConsoleView : import
+    DataBaseManager .> ConsoleView : import
+
+    skinparam backgroundColor #CFD0CF
+
+}
+@enduml
