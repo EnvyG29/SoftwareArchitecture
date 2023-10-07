@@ -1,0 +1,22 @@
+@startuml
+interface Abstraction {
+   + operation(): void
+}
+
+abstract class Implementation {
+  + do_operation(): void
+}
+
+class ConcreteImplementationA {
+    + do_operation(): void
+}
+
+class ConcreteImplementationB {
+    + do_operation(): void
+}
+
+Abstraction o-- Implementation
+Implementation <|.. ConcreteImplementationA
+Implementation <|.. ConcreteImplementationB
+@enduml
+

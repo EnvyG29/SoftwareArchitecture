@@ -1,0 +1,18 @@
+@startuml
+abstract class Flyweight {
+    {abstract} + operation(extrinsic_state: String): void
+}
+
+class ConcreteFlyweight {
+    + operation(extrinsic_state: String): void
+}
+
+class FlyweightFactory {
+    - flyweights: HashMap
+    + get_flyweight(key: String): Flyweight
+}
+
+Flyweight <|.. ConcreteFlyweight
+FlyweightFactory o-- Flyweight
+@enduml
+

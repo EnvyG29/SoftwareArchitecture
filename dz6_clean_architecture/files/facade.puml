@@ -1,0 +1,21 @@
+@startuml
+class Subsystem1 {
+    + operation1(): void
+    + operation2(): void
+}
+
+class Subsystem2 {
+    + operation1(): void
+    + operation2(): void
+}
+
+class Facade {
+    - subsystem1: Subsystem1
+    - subsystem2: Subsystem2
+    + operation(): void
+}
+
+Facade o-- Subsystem1
+Facade o-- Subsystem2
+@enduml
+
